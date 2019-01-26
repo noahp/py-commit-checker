@@ -13,7 +13,7 @@ MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=for-the-badg
 ```bash
 pip install py-commit-checker
 
-py-commit-checker --emoji
+py-commit-checker --emojis
 ```
 
 # License
