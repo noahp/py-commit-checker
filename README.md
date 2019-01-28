@@ -10,27 +10,49 @@ pyversions](https://img.shields.io/pypi/pyversions/py-commit-checker.svg?style=f
 MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 # 📝 py-commit-checker
-A basic commit message format checker. Features:
-1. [50/70](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+
+A basic commit message format checker.
+
+# Checkers
+
+Small set of mandatory (cannot be disabled) and optional (opt in or out) checkers.
+
+## Always enabled
+
+These checks are always enabled:
+
+1. mandatory blank second line (delimiting title + body of message)
+
+## Optional
+
+These checks can be set to on or off using command line args:
+
+1. [50/72](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
    rule checking (configurable lengths)
-2. blank second line (delimiting title + body of message)
-3. optional leading emoji check
+2. [leading emoji](https://gitmoji.carloscuesta.me/) check
 
 Returns non-zero in case of any violation
 
 ```bash
 pip install py-commit-checker
 
+# check for 50/72 + emoji compliance
 py-commit-checker --emojis
+
+# check a specific commit
+py-commit-checker --emojis --commit HEAD~2
 ```
 
 # Tests
+
 This package uses tox. To run the tests locally:
+
 ```bash
 pip install tox==3.7.0  # minimum supported version
 
 tox --parallel auto  # run tox in parallel
 ```
+
 This is a py2+3 universal package; it's recommended you install python3.6 with
 whatever your system package manager is, if it isn't already installed, so tox
 can run the checks for that too.
@@ -39,4 +61,5 @@ Tox will enforce 100% [pylint](https://www.pylint.org/) compliance, and
 [black](https://github.com/ambv/black) formatting compliance.
 
 # License
+
 MIT.

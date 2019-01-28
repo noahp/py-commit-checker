@@ -97,7 +97,7 @@ def check_emoji(commit_msg_lines):
     "-b",
     help="Commit body line length setting",
     type=click.INT,
-    default=70,
+    default=72,
     show_default=True,
 )
 def main(commit, repo_path, emojis, line_length, line_length_title, line_length_body):
