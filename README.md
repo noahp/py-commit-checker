@@ -11,7 +11,7 @@ MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=for-the-badg
 
 # 📝 py-commit-checker
 
-A basic commit message format checker.
+A basic git commit message format checker.
 
 # Checkers
 
@@ -33,14 +33,24 @@ These checks can be set to on or off using command line args:
 
 Returns non-zero in case of any violation
 
+# Install
+
 ```bash
 pip install py-commit-checker
+# note: you'll need git installed for the gitpython dependency to work!
+```
 
-# check for 50/72 + emoji compliance
+# Usage
+
+```bash
+# check for 50/72 + emoji compliance on HEAD
 py-commit-checker --emojis
 
 # check a specific commit
 py-commit-checker --emojis --commit HEAD~2
+
+# check a repo at a path other than cwd
+py-commit-checker --repo-path ../openbsd
 ```
 
 # Tests

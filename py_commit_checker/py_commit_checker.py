@@ -101,7 +101,7 @@ def check_emoji(commit_msg_lines):
     show_default=True,
 )
 def main(commit, repo_path, emojis, line_length, line_length_title, line_length_body):
-    """Cli entrance point"""
+    """Basic git commit checker written in python."""
 
     commit_msg_lines = get_commit_msg_lines(repo_path, commit)
 
