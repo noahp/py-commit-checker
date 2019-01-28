@@ -21,8 +21,6 @@ def get_commit_msg_lines(repo_path, commit):
     """Return iterator of commit message lines for given repo path and commit"""
     repo = git.Repo(repo_path)
     commit_msg = repo.commit(commit).message
-    # if sys.version_info < (3,):
-        # commit_msg = commit_msg.decode("utf-8")
     return commit_msg.splitlines()
 
 
@@ -96,7 +94,7 @@ def check_emoji(commit_msg_lines):
 )
 @click.option(
     "--line-length-body",
-    "-t",
+    "-b",
     help="Commit body line length setting",
     type=click.INT,
     default=70,

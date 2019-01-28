@@ -23,7 +23,7 @@ def get_long_description():
 
 setup(
     name="py-commit-checker",
-    version="0.0.0",
+    version="0.0.1",
     description="Basic commit checker, with optional emoji check",
     author="Noah Pendleton",
     author_email="2538614+noahp@users.noreply.github.com",
