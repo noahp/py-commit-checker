@@ -53,6 +53,13 @@ py-commit-checker --emojis --commit HEAD~2
 py-commit-checker --repo-path ../openbsd
 ```
 
+# Why is this not just a single regex
+
+Because I was too lazy to figure out how to exclude URI elements from the body
+line length check in regex 🐸☕.
+
+Also distributing with pypi is pretty convenient 😀
+
 # Tests
 
 This package uses tox. To run the tests locally:
