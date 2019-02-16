@@ -12,7 +12,7 @@ with io.open("README.md", "rt", encoding="utf8") as readmefile:
 
 setup(
     name="py-commit-checker",
-    version="0.1.0",
+    version="0.2.0",
     description="Basic commit checker, with optional emoji check",
     author="Noah Pendleton",
     author_email="2538614+noahp@users.noreply.github.com",

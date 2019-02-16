@@ -54,15 +54,18 @@ def check_line_lengths(
 
         if len(commit_msg_lines) > 2:
             # check body line lengths
-            # need to update to enable URI exception to max line length...
+            uri_re = re.compile(r"\w+:[^\s]+$")
             for line in commit_msg_lines[2:]:
                 if len(line) > line_length_body:
-                    return (
-                        False,
-                        u"Body line too long, {} > {}\n  > {}".format(
-                            len(line), line_length_body, line
-                        ),
-                    )
+                    # uri's that exceed the body line length are exceptions to the max-len check
+                    uri = uri_re.match(line)
+                    if not uri or len(uri.group(0)) < line_length_body:
+                        return (
+                            False,
+                            u"Body line too long, {} > {}\n  > {}".format(
+                                len(line), line_length_body, line
+                            ),
+                        )
 
     return (True, "")
 
