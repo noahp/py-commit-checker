@@ -12,7 +12,7 @@ with io.open("README.md", "rt", encoding="utf8") as readmefile:
 
 setup(
     name="py-commit-checker",
-    version="0.2.0",
+    version="0.2.1",
     description="Basic commit checker, with optional emoji check",
     author="Noah Pendleton",
     author_email="2538614+noahp@users.noreply.github.com",
@@ -26,12 +26,7 @@ setup(
     license="MIT",
     packages=["py_commit_checker"],
     # yolo least specifiers, probably break eventually
-    install_requires=[
-        "click>=7.0",
-        "click-help-colors>=0.5",
-        "emoji>=0.5.1",
-        "gitpython>=2.1.11",
-    ],
+    install_requires=["click>=6.5", "emoji>=0.5.1", "gitpython>=2.1.11"],
     entry_points={
         "console_scripts": [
             "py-commit-checker=py_commit_checker.py_commit_checker:main"

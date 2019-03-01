@@ -7,7 +7,6 @@ from __future__ import print_function
 import re
 import sys
 import click
-from click_help_colors import HelpColorsCommand
 import emoji
 import git
 
@@ -90,9 +89,7 @@ def check_emoji(line, emoji_regex):
 
 
 # pylint: disable=too-many-arguments
-@click.command(
-    cls=HelpColorsCommand, help_headers_color="yellow", help_options_color="green"
-)
+@click.command()
 @click.version_option()
 @click.option(
     "--commit", "-c", help="Commit-ish to check", type=click.STRING, default="HEAD"
