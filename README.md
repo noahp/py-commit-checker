@@ -13,6 +13,10 @@ MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=for-the-badg
 
 A basic git commit message format checker.
 
+_Note: check out https://github.com/jorisroovers/gitlint for a much better,
+more featureful, and actually tested implementation! the only unique feature in
+`py-commit-checker` is the built in leading emoji check... 😀_
+
 # Checkers
 
 Small set of mandatory (cannot be disabled) and optional (opt in or out) checkers.
@@ -43,7 +47,7 @@ pip install py-commit-checker
 # Usage
 
 ```bash
-# check for 50/72 + emoji compliance on HEAD
+# check top commit for 50/72 + emoji compliance on HEAD
 py-commit-checker --emojis
 
 # check a specific commit
@@ -51,6 +55,10 @@ py-commit-checker --emojis --commit HEAD~2
 
 # check a repo at a path other than cwd
 py-commit-checker --repo-path ../openbsd
+
+# check a range of commits; py-commit-checker-branch helper script (installed
+# alongside py-commit-checker)
+PY_COMMIT_CHECKER_ARGS='--emojis' py-commit-checker-branch origin/master
 ```
 
 # Why is this not just a single regex

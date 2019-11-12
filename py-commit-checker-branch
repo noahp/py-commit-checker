@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Small script used to run py-commit-checker against all commits in a branch vs
+# a merge-base (eg for pull request checking). Set options in
+# PY_COMMIT_CHECKER_ARGS
+
+set -e
+
+REF_BASE=${1:-origin/master}
+
+for sha in $(git rev-list HEAD..."$REF_BASE"); do
+    echo "Checking $sha ..."
+    py-commit-checker $PY_COMMIT_CHECKER_ARGS --commit "$sha"
+done
