@@ -3,12 +3,16 @@
 Simple commit checker.
 """
 
-from __future__ import print_function
+from __future__ import print_function, absolute_import
+
 import re
 import sys
+
 import click
 import emoji
+
 import git
+from py_commit_checker.__version__ import __version__
 
 # Regex pattern used to locate the emoji character in a title line
 EMOJI_REGEX_PLACEHOLDER = "(?P<emoji>.)"
@@ -21,9 +25,8 @@ def checker_msg(condition, msg):
         sys.exit(-1)
 
 
-def get_commit_msg_lines(repo_path, commit):
+def get_commit_msg_lines(repo, commit):
     """Return iterator of commit message lines for given repo path and commit"""
-    repo = git.Repo(repo_path)
     commit_msg = repo.commit(commit).message
     return commit_msg.splitlines()
 
@@ -78,7 +81,7 @@ def check_emoji(line, emoji_regex):
             False,
             (
                 u"Error matching emoji with:\n regex= '{}'\n line= '{}'\n"
-                + u"Make sure you have {} in your expression"
+                u"Make sure you have {} in your expression"
             ).format(emoji_regex, line, EMOJI_REGEX_PLACEHOLDER),
         )
         raise AssertionError(
@@ -137,6 +140,11 @@ Use '{placeholder}' as the placeholder for the emoji character. Examples:
     default=72,
     show_default=True,
 )
+@click.option(
+    "--check-merge-commits",
+    help="Also check commits with multiple parents",
+    is_flag=True,
+)
 def main(
     commit,
     repo_path,
@@ -145,10 +153,23 @@ def main(
     line_length,
     line_length_title,
     line_length_body,
+    check_merge_commits,
 ):
     """Basic git commit checker written in python."""
 
-    commit_msg_lines = get_commit_msg_lines(repo_path, commit)
+    # open the repo
+    repo = git.Repo(repo_path)
+    commit_obj = repo.commit(commit)
+
+    # if the specified commit is a merge commit, exit
+    if not check_merge_commits and len(commit_obj.parents) > 1:
+        click.echo(
+            click.style("Not checking merge commit {}".format(commit), bold=True)
+        )
+        sys.exit(0)
+
+    # get the commit message lines
+    commit_msg_lines = commit_obj.message.splitlines()
 
     checker_msg(
         *check_line_lengths(
