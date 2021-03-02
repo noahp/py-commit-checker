@@ -1,7 +1,7 @@
 [![Code style:
 black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge)](https://github.com/ambv/black)
-[![Travis (.com)
-branch](https://img.shields.io/travis/com/noahp/py-commit-checker/master.svg?style=for-the-badge)](https://travis-ci.com/noahp/py-commit-checker)
+[![GitHub Workflow
+Status](https://img.shields.io/github/workflow/status/noahp/py-commit-checker/main-ci?style=for-the-badge)](https://github.com/noahp/py-commit-checker/actions)
 [![PyPI
 version](https://img.shields.io/pypi/v/py-commit-checker.svg?style=for-the-badge)](https://pypi.org/project/py-commit-checker/)
 [![PyPI

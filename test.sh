@@ -21,7 +21,7 @@ DOCKER_BUILDKIT=1 docker build -t "$DOCKER_IMAGE_NAME" --build-arg "UID=$(id -u)
 
 # execute tox in the docker container. don't run in parallel; conda has issues
 # when we do this (pkg cache operations are not atomic!)
-docker run --rm -i \
+docker run --rm \
     --volume "$(pwd)":/mnt/workspace \
     --volume "${GIT_ROOT_DIR}":"${GIT_ROOT_DIR}" \
     -t "$DOCKER_IMAGE_NAME" bash -c "tox"
