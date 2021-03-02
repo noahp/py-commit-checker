@@ -88,7 +88,7 @@ def check_emoji(line, emoji_regex):
             "Error matching for emoji, check your regex: '{}'".format(emoji_regex)
         )
 
-    return emoji_char.group("emoji") in emoji.UNICODE_EMOJI
+    return emoji_char.group("emoji") in emoji.UNICODE_EMOJI["en"]
 
 
 # pylint: disable=too-many-arguments

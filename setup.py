@@ -35,8 +35,8 @@ setup(
     long_description_content_type="text/markdown",
     license="MIT",
     packages=["py_commit_checker"],
-    # yolo least specifiers, probably break eventually
-    install_requires=["click>=6.5", "emoji>=0.5.1", "gitpython>=2.1.11"],
+    # yolo non-precise specifiers, probably break eventually
+    install_requires=["click>=6.5", "emoji==1.2.*", "gitpython>=2.1.11"],
     entry_points={
         "console_scripts": [
             "py-commit-checker=py_commit_checker.py_commit_checker:main"
