@@ -31,7 +31,6 @@ def get_commit_msg_lines(repo, commit):
     return commit_msg.splitlines()
 
 
-# pylint: disable=bad-continuation
 def check_line_lengths(
     commit_msg_lines, yes_check_line_lengths, line_length_title, line_length_body
 ):

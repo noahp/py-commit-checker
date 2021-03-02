@@ -1,0 +1,30 @@
+name: main-ci
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      # checkout v2, with recursive submodule update
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      # run the tests in docker
+      - name: test.sh
+        run: ./test.sh
+
+      # upload-artifact is used to save the py27 wheel. this wheel is compatible
+      # with python2 and python3
+      - uses: actions/upload-artifact@v1
+        with:
+          name: py27-wheel-output
+          path: .tox/py27-stable/dist/
